@@ -1,6 +1,6 @@
 cask "volanta" do
-  version "1.7.1,500b797e"
-  sha256 "4e5da1f34560d7372f2f21f67c5faaac9281f280a485523167175f1467c98440"
+  version "1.10.8,1e545d2d"
+  sha256 "cb3820e8af9321c8c471368f4fc284b9193a1cec88609f774fa334b62deebe49"
 
   url "https://cdn.volanta.app/software/volanta-app/#{version.csv.first}-#{version.csv.second}/volanta-#{version.csv.first}.dmg"
   name "Volanta"
@@ -9,13 +9,18 @@ cask "volanta" do
 
   livecheck do
     url "https://api.volanta.app/api/v1/ClientUpdate/latest-mac.yml"
-    regex(%r{volanta-app/(\d+(?:\.\d+)+)-(.+)/}i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    regex(%r{volanta-app/v?(\d+(?:\.\d+)+)[._-](\h+)/}i)
+    strategy :electron_builder do |yaml, regex|
+      yaml["files"]&.map do |item|
+        match = item["url"]&.match(regex)
+        next if match.blank?
+
+        "#{match[1]},#{match[2]}"
+      end
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Volanta.app"
 

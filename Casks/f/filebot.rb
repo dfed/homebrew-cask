@@ -1,19 +1,21 @@
 cask "filebot" do
   arch arm: "arm64", intel: "x64"
 
-  version "5.1.2"
-  sha256 arm:   "f1e5faf8d669581bde28c06663d42419986ad75d3a4702d4a086ecb1f1bbdf67",
-         intel: "02f4b0b726582f67997f7bff824d7f8fed93b8d3b29be04f8144601bc2030fca"
+  version "5.1.6"
+  sha256 arm:   "abab420f18ef537df6e460e0f87fc2814eb4f9e41eee9938728ea4d7280c8cdf",
+         intel: "d9457eb1be1f4f7b2e94c60c65d1cbaa41129da2922bf7ebd193d12cdc1acf29"
 
   url "https://get.filebot.net/filebot/FileBot_#{version}/FileBot_#{version}_#{arch}.app.tar.xz"
   name "FileBot"
-  desc "Tool for organizing and renaming movies, TV shows, anime or music"
+  desc "Tool for organising and renaming movies, TV shows, anime or music"
   homepage "https://www.filebot.net/"
 
   livecheck do
     url "https://www.filebot.net/download.html"
     regex(/href=.*?FileBot[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.pkg/i)
   end
+
+  depends_on macos: ">= :catalina"
 
   app "FileBot.app"
   binary "#{appdir}/FileBot.app/Contents/MacOS/filebot.sh", target: "filebot"

@@ -3,12 +3,12 @@ cask "pushplaylabs-sidekick" do
   livecheck_folder = on_arch_conditional arm: "macm1", intel: "mac"
 
   on_arm do
-    version "120.57.1.37617,5d71d93"
-    sha256 "f3c3d041bdead8608b6f5902bb3f74893e2ad691730b3d0049b4adaba1611763"
+    version "124.61.1.50292,e244ab6"
+    sha256 "0c24c5359afd792d41d6637729b0e3e2f2c75e0db16fcbef1df1495a2fc56dbd"
   end
   on_intel do
-    version "120.57.1.37618,8f63c93"
-    sha256 "dbddf72d4eaa14f956f80b7ab3bcd193d608dad70502eda366dcc429fe66cf97"
+    version "124.61.1.50293,ec2d193"
+    sha256 "23484f6b82d9525cdd3f5f0db40ef248c55e156b370ee61d02e0496e393bf50d"
   end
 
   url "https://cdn.meetsidekick.com/browser-builds/sidekick-mac-release-#{arch}-#{version.csv.first}-#{version.csv.second}-df.dmg"
@@ -20,11 +20,14 @@ cask "pushplaylabs-sidekick" do
     url "https://api.meetsidekick.com/downloads/df/#{livecheck_folder}"
     regex(/[_-](\d+(?:\.\d+)+)[_-](.+)[._-](?:default|df)\.dmg/i)
     strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[1]},#{match[2]}"
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Sidekick.app"
 

@@ -1,6 +1,6 @@
 cask "mist" do
-  version "0.9.1"
-  sha256 "f88c80cbf4f3feb54dbf5fb0d783d6d18e8e039b59b2f87881103fa84677eb8f"
+  version "0.20.1"
+  sha256 "45d53266264a3bb6f32656b569ffc3d05df0b7202516df4d320b37f8f0dae6e3"
 
   url "https://github.com/ninxsoft/Mist/releases/download/v#{version}/Mist.#{version}.pkg"
   name "Mist"

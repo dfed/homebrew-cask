@@ -1,20 +1,21 @@
 cask "tableau-public" do
-  version "2023.3.1"
-  sha256 "7c2652216a832c0d482c53d82f7aaa05a098a194c875d75674c1c19520ce397a"
+  arch arm: "-arm64"
 
-  url "https://downloads.tableau.com/public/TableauPublic-#{version.dots_to_hyphens}.dmg"
+  version "2024.3.2"
+  sha256 arm:   "16f7e58f34a6dea861633cc9b052867911ff70a0861a769cc8b6ad42f0dfb3ea",
+         intel: "a19a8efdbdb47ecbbc32ad047f4c2080e4c1db026679b77fd64af1e9e0273bbc"
+
+  url "https://downloads.tableau.com/esdalt/#{version}/TableauPublic-#{version.dots_to_hyphens}#{arch}.pkg",
+      user_agent: "curl/8.7.1"
   name "Tableau Public"
-  desc "Explore, create and publicly share data visualizations online"
+  desc "Explore, create and publicly share data visualisations online"
   homepage "https://public.tableau.com/s/"
 
   livecheck do
-    url "https://www.tableau.com/downloads/public/mac"
-    strategy :header_match do |headers|
-      headers["location"][/TableauPublic[._-]v?(\d+(?:-\d+)+)\.dmg/i, 1].tr("-", ".")
-    end
+    cask "tableau"
   end
 
-  pkg "Tableau Public.pkg"
+  pkg "TableauPublic-#{version.dots_to_hyphens}#{arch}.pkg"
 
   uninstall pkgutil: [
     "com.tableausoftware.FLEXNet.*",

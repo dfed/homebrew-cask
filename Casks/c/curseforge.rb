@@ -1,6 +1,6 @@
 cask "curseforge" do
-  version "0.242.1-1"
-  sha256 "0ad198a1f8a678aa9a47e879dae260c63157cb3600916efb705cb0c4394e802b"
+  version "1.269.1-0"
+  sha256 "e9a0f4734ea6fd7a261e5abcf5c1e52bcec04de4b5a025e0fcd09efed53614e0"
 
   url "https://curseforge.overwolf.com/electron/mac/CurseForge-#{version}-universal-mac.zip"
   name "CurseForge"
@@ -13,7 +13,7 @@ cask "curseforge" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "CurseForge.app"
 

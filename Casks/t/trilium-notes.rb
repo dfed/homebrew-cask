@@ -1,6 +1,6 @@
 cask "trilium-notes" do
-  version "0.62.6"
-  sha256 "abe1cee54730c1874cd12c4086bb05b546fee87c48074564637c508694a334a8"
+  version "0.63.7"
+  sha256 "c110cd7d6fdcdfec9d833937f09e611af967786e3fa838673d6274a7268b0b22"
 
   url "https://github.com/zadam/trilium/releases/download/v#{version}/trilium-mac-x64-#{version}.zip"
   name "Trilium Notes"
@@ -12,6 +12,8 @@ cask "trilium-notes" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "trilium-mac-x64/Trilium Notes.app"
 
   zap trash: [
@@ -20,4 +22,8 @@ cask "trilium-notes" do
     "~/Library/Preferences/com.electron.trilium-notes.plist",
     "~/Library/Saved Application State/com.electron.trilium-notes.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

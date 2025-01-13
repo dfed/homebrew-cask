@@ -1,6 +1,6 @@
 cask "rocket-chat" do
-  version "3.9.11"
-  sha256 "554c73f37dab507d0695f9de4a4828abe82e24b269646040035afde9a7c30709"
+  version "4.1.2"
+  sha256 "4f47a2c60c910b0ec1740f75d365363a42b366462044aada5f1bf70f29194d9a"
 
   url "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/#{version}/rocketchat-#{version}-mac.dmg",
       verified: "github.com/RocketChat/Rocket.Chat.Electron/"
@@ -14,6 +14,7 @@ cask "rocket-chat" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Rocket.Chat.app"
 

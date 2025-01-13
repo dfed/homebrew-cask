@@ -1,6 +1,6 @@
 cask "app-tamer" do
-  version "2.8.2"
-  sha256 "f289ddc261a7b29c9d3c3116dd459b94d44fa10501f5bac02d2fb503976ee995"
+  version "2.8.4"
+  sha256 "1f371c349fd30af106469a3ce21fc09070fc740725a1096bce9533bda10a1424"
 
   url "https://www.stclairsoft.com/download/AppTamer-#{version}.dmg"
   name "AppTamer"
@@ -12,6 +12,7 @@ cask "app-tamer" do
     strategy :sparkle, &:short_version
   end
 
+  auto_updates true
   depends_on macos: ">= :high_sierra"
 
   app "App Tamer.app"
@@ -22,7 +23,9 @@ cask "app-tamer" do
   ]
 
   zap trash: [
+    "~/Library/Application Support/.com.stclairsoft.data",
     "~/Library/Caches/com.stclairsoft.AppTamer",
+    "~/Library/HTTPStorages/com.stclairsoft.AppTamer",
     "~/Library/Preferences/com.stclairsoft.AppTamer.plist",
   ]
 end

@@ -1,19 +1,13 @@
 cask "dehelper" do
-  version "4.6.0"
+  version :latest
   sha256 :no_check
 
-  url "https://static.frdic.com/pkg/dhmac.dmg",
-      verified:   "static.frdic.com/",
+  url "https://static.eudic.net/pkg/dhmac.dmg",
       user_agent: :fake
   name "Dehelper"
   name "德语助手"
   desc "Chinese-German dictionary"
-  homepage "https://www.eudic.net/v#{version.major}/de/app/dehelper"
-
-  livecheck do
-    url "https://www.eudic.net/update/dehelper_mac.xml"
-    strategy :sparkle, &:short_version
-  end
+  homepage "https://www.eudic.net/v4/de/app/dehelper"
 
   depends_on macos: ">= :high_sierra"
 

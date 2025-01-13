@@ -25,7 +25,8 @@ cask "steam" do
               "com.valvesoftware.steam",
               "com.valvesoftware.steam.helper",
               "com.valvesoftware.steam.helper.EH",
-            ]
+            ],
+            delete:    "~/Library/Application Support/Steam/Steam.AppBundle"
 
   zap trash: [
     "~/Library/Application Support/Steam/",
@@ -33,4 +34,8 @@ cask "steam" do
     "~/Library/Preferences/com.valvesoftware.steam.helper.plist",
     "~/Library/Saved Application State/com.valvesoftware.steam.savedState/",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

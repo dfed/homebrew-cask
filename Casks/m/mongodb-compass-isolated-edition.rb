@@ -1,9 +1,9 @@
 cask "mongodb-compass-isolated-edition" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.41.0"
-  sha256 arm:   "9bd1ca88d3b77843e1a500ccf1780c8cf0955b7d56f0c34ee29eb6a83fa2e7b7",
-         intel: "f3072cf294962aa5f548088cca0f2696cb66465d581b458f27ac181682b3c8a8"
+  version "1.45.0"
+  sha256 arm:   "8f109fd6ca7819ea52982f4e60f2e0cc2f15b4153cc75ad023bde481fd85a518",
+         intel: "4d325677f068abd97b0ea320e29a085acd5e9a1c94b46265ff03c1a1b1fe93c9"
 
   url "https://downloads.mongodb.com/compass/mongodb-compass-isolated-#{version}-darwin-#{arch}.dmg"
   name "MongoDB Compass Isolated"
@@ -12,8 +12,18 @@ cask "mongodb-compass-isolated-edition" do
 
   livecheck do
     url "https://info-mongodb-com.s3.amazonaws.com/com-download-center/compass.json"
-    regex(/"version"\s*:\s*"(\d+(?:\.\d+)+)\s*\(Isolated/i)
+    regex(/^v?(\d+(?:\.\d+)+)[._-]isolated$/i)
+    strategy :json do |json, regex|
+      json["versions"]&.map do |item|
+        match = item["_id"]&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
+    end
   end
+
+  depends_on macos: ">= :catalina"
 
   app "MongoDB Compass Isolated Edition.app"
 

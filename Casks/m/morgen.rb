@@ -1,9 +1,9 @@
 cask "morgen" do
   arch arm: "arm64", intel: "x64"
 
-  version "3.1.6,2401055aeuxhh4j"
-  sha256 arm:   "b7555cbdaf56edd1d199787d38e5b574413afa56dca9d5f5ddad5cabb92c2398",
-         intel: "d85848b98c790c310b15c3649d4a6715204ef16bad9672ccf7b1792025e7d9cb"
+  version "3.6.4,250107wftmqvot8"
+  sha256 arm:   "a8225d51f01b743a22ed35ca05df69893f2137c32ca8e7f35b1d673b6a4f1d35",
+         intel: "92797ad018c149922e297fbef1fc9c80c2eee31ed23546160759415a7f6872c2"
 
   url "https://download.todesktop.com/210203cqcj00tw1/Morgen%20#{version.csv.first}%20-%20Build%20#{version.csv.second}-#{arch}.dmg",
       verified: "download.todesktop.com/210203cqcj00tw1/"
@@ -13,13 +13,18 @@ cask "morgen" do
 
   livecheck do
     url "https://download.todesktop.com/210203cqcj00tw1/latest-mac.yml"
-    regex(/Morgen\sv?(\d+(?:\.\d+)+).*?(?:Build\s)([a-z0-9]+)[._-]#{arch}\.dmg/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    regex(/Morgen\s+v?(\d+(?:\.\d+)+).*?(?:Build\s+)([a-z0-9]+)[._-]#{arch}\.dmg/i)
+    strategy :electron_builder do |yaml, regex|
+      yaml["files"]&.map do |item|
+        match = item["url"]&.match(regex)
+        next if match.blank?
+
+        "#{match[1]},#{match[2]}"
+      end
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Morgen.app"
 

@@ -1,8 +1,8 @@
 cask "obsidian" do
-  version "1.5.3"
-  sha256 "0178f3430671c91688f26314d84b0d2b47d17174bb50d34158f5de2738289a56"
+  version "1.7.7"
+  sha256 "bf360c4c7d7268ac70d40c0939755dcef2b2413902326c7b34f3cfffdf7180c4"
 
-  url "https://github.com/obsidianmd/obsidian-releases/releases/download/v#{version}/Obsidian-#{version}-universal.dmg",
+  url "https://github.com/obsidianmd/obsidian-releases/releases/download/v#{version}/Obsidian-#{version}.dmg",
       verified: "github.com/obsidianmd/"
   name "Obsidian"
   desc "Knowledge base that works on top of a local folder of plain text Markdown files"
@@ -14,7 +14,7 @@ cask "obsidian" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Obsidian.app"
 

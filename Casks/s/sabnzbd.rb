@@ -1,6 +1,6 @@
 cask "sabnzbd" do
-  version "4.2.1"
-  sha256 "2515533d5657626e42e6de6177bbe6863ccebfe9deb828c9871d9ddce3d6cae4"
+  version "4.4.1"
+  sha256 "135d06e85663cd561b270a60c606971ab98b27e93e66ebac34a385608f8a2004"
 
   url "https://github.com/sabnzbd/sabnzbd/releases/download/#{version}/SABnzbd-#{version}-osx.dmg",
       verified: "github.com/sabnzbd/sabnzbd/"
@@ -12,6 +12,8 @@ cask "sabnzbd" do
     url :url
     strategy :github_latest
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "SABnzbd.app"
 

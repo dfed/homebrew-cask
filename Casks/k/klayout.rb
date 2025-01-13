@@ -7,8 +7,7 @@ cask "klayout" do
         verified: "klayout.org/downloads/MacOS/"
 
     livecheck do
-      url "https://www.klayout.de/build.html"
-      regex(/href=.*?HW[._-]klayout[._-](\d+(?:\.\d+)+)[._-]macOS[._-]Catalina.*?\.dmg/i)
+      skip "Legacy version"
     end
   end
   on_big_sur do
@@ -19,15 +18,14 @@ cask "klayout" do
         verified: "klayout.org/downloads/MacOS/"
 
     livecheck do
-      url "https://www.klayout.de/build.html"
-      regex(/href=.*?HW[._-]klayout[._-](\d+(?:\.\d+)+)[._-]macOS[._-]BigSur.*?\.dmg/i)
+      skip "Legacy version"
     end
   end
   on_monterey do
-    version "0.28.15"
-    sha256 "fb2fe78a2d71822bf36031dec04e17444afded27a4c373628fa9e0197673ebd3"
+    version "0.29.6"
+    sha256 "2c324dc95d77a0167d6c56608d2beca5f78b5190259480d97ef1500b19bc7389"
 
-    url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Monterey-1-qt5Brew-RsysPhb311.dmg",
+    url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Monterey-1-qt5MP-RsysPhb311.dmg",
         verified: "klayout.org/downloads/MacOS/"
 
     livecheck do
@@ -36,10 +34,10 @@ cask "klayout" do
     end
   end
   on_ventura do
-    version "0.28.15"
-    sha256 "6c72dcf8d757f688671c837d34c4a192340d7e07b7cda751d228f0db296ccd1c"
+    version "0.29.10"
+    sha256 "92dd3291839ed583b843e431960129d584ccb58c6348d7e65e40573d720bef7c"
 
-    url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Ventura-1-qt5Brew-RsysPhb311.dmg",
+    url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Ventura-1-qt5MP-RsysPhb311.dmg",
         verified: "klayout.org/downloads/MacOS/"
 
     livecheck do
@@ -48,10 +46,10 @@ cask "klayout" do
     end
   end
   on_sonoma :or_newer do
-    version "0.28.15"
-    sha256 "6c72dcf8d757f688671c837d34c4a192340d7e07b7cda751d228f0db296ccd1c"
+    version "0.29.10"
+    sha256 "49f74bebb48f06051c5fde2e4d5ecb702601d0d923d3b7e7fd7a00541aa3558f"
 
-    url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Ventura-1-qt5Brew-RsysPhb311.dmg",
+    url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Sonoma-1-qt5MP-RsysPhb311.dmg",
         verified: "klayout.org/downloads/MacOS/"
 
     livecheck do

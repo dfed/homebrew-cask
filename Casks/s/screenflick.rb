@@ -1,6 +1,6 @@
 cask "screenflick" do
-  version "3.2"
-  sha256 "3c9f98f130ee4cd8643c172dc4ed88a905eea18fe075447cce15f676a5d0d08a"
+  version "3.2.8"
+  sha256 "84fbc5a3b9cf84808e03cb7dca309d9ce43b630c18959c297fe57a7827731d6d"
 
   url "https://store.araelium.com/screenflick/downloads/versions/Screenflick#{version}.zip"
   name "Screenflick"
@@ -9,10 +9,16 @@ cask "screenflick" do
 
   livecheck do
     url "https://arweb-assets.s3.amazonaws.com/downloads/screenflick/updates.json"
-    regex(/Screenflick(\d+(?:\.\d+)+)\.zip/i)
+    strategy :json do |json|
+      json["release"]&.map do |release|
+        next if release["downloadURL"].blank?
+
+        release["version"]
+      end
+    end
   end
 
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :catalina"
 
   app "Screenflick.app"
 

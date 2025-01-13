@@ -4,10 +4,10 @@ cask "profilecreator" do
 
   url "https://github.com/erikberglund/ProfileCreator/releases/download/v#{version.csv.first}/ProfileCreator_v#{version.csv.first}-#{version.csv.second}.dmg"
   name "ProfileCreator"
-  desc "Create standard or customized configuration profiles"
+  desc "Create standard or customised configuration profiles"
   homepage "https://github.com/erikberglund/ProfileCreator"
 
-  deprecate! date: "2023-12-17", because: :discontinued
+  disable! date: "2024-12-16", because: :discontinued
 
   depends_on macos: ">= :sierra"
 

@@ -1,9 +1,9 @@
 cask "playdate-simulator" do
-  version "2.2.0"
-  sha256 "65d73eff8edf059cbb3a68cb3d50fcfe6f3af1324fb5ce831b09482f1e03a246"
+  version "2.6.2"
+  sha256 "4a93405d56c63fa3a7647196a11faf72502c2429b8be9ebcb87b1733304281e0"
 
-  url "https://download-keycdn.panic.com/playdate_sdk/PlaydateSDK-#{version}.zip",
-      verified: "download-keycdn.panic.com/playdate_sdk/"
+  url "https://download-cdn.panic.com/playdate_sdk/PlaydateSDK-#{version}.zip",
+      verified: "download-cdn.panic.com/playdate_sdk/"
   name "Playdate SDK"
   desc "Playdate Lua and C APIs, docs and Simulator for local development"
   homepage "https://play.date/dev/"

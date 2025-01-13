@@ -1,5 +1,5 @@
 cask "google-web-designer" do
-  version "12.2.0.0"
+  version "14.0.1.0"
   sha256 :no_check
 
   url "https://dl.google.com/webdesigner/mac/shell/googlewebdesigner_mac.dmg"
@@ -8,9 +8,11 @@ cask "google-web-designer" do
   homepage "https://www.google.com/webdesigner/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://support.google.com/webdesigner/topic/6350071"
+    regex(/Shell\s+Build\s+v?(\d+(?:\.\d+)+)/i)
   end
+
+  depends_on macos: ">= :catalina"
 
   app "Google Web Designer.app"
 
@@ -22,4 +24,8 @@ cask "google-web-designer" do
         "~/Library/Saved Application State/com.google.WebDesigner.savedState",
       ],
       rmdir: "~/Library/Google"
+
+  caveats do
+    requires_rosetta
+  end
 end

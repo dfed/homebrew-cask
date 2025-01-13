@@ -2,12 +2,12 @@ cask "dotnet" do
   arch arm: "arm64", intel: "x64"
 
   on_arm do
-    version "8.0.1,a7984b93-92dc-41e1-996c-fd059c17afb4,c44ed6a09d648e289e49002c0d7297c2"
-    sha256 "47a212731dbdb97f8d3a424a6f8a0d5bf2cbe7963faf3a6a48a424d5a4bebf7b"
+    version "9.0.0,a129df43-9d92-421f-9d63-eb9a8218e16a,9533b915759dcbe7cbd2fb0bed4d1ba2"
+    sha256 "0dc84cb66121ca4fcb75adfa80bf55730150f6e8f6957e22089872d00b2623f3"
   end
   on_intel do
-    version "8.0.1,2dc0cd09-9e3d-4329-b01b-12b417e610de,38a37e5f8b93ef55e6630f216265293a"
-    sha256 "5872063bb45f3e9b3e4bcf93384f00e6fd4a95230db66ea5089a589ecb8a52e7"
+    version "9.0.0,c36c7ef4-59b3-40e5-ae06-798b485fc007,579afa87e7f72dc6af44bc96aa6c2477"
+    sha256 "7dd57f7f7847f5f8359b65c68e63c23b13fb0ab287047e24ee7835ef15856108"
   end
 
   url "https://download.visualstudio.microsoft.com/download/pr/#{version.csv.second}/#{version.csv.third}/dotnet-runtime-#{version.csv.first}-osx-#{arch}.pkg"
@@ -19,17 +19,21 @@ cask "dotnet" do
   # cask version. New major/minor releases occur annually in November and the
   # check will automatically update its behavior when the cask is updated.
   livecheck do
-    url "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/#{version.major_minor}/releases.json"
-    regex(%r{/download/pr/([^/]+)/([^/]+)/dotnet-runtime-v?(\d+(?:\.\d+)+)-osx-#{arch}\.pkg}i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[2]},#{match[0]},#{match[1]}" }
+    url "https://builds.dotnet.microsoft.com/dotnet/release-metadata/#{version.major_minor}/releases.json"
+    regex(%r{/download/pr/([^/]+)/([^/]+)/dotnet-runtime[._-]v?(\d+(?:\.\d+)+)[._-]osx[._-]#{arch}\.pkg}i)
+    strategy :json do |json, regex|
+      json["releases"]&.map do |release|
+        release.dig("runtime", "files")&.map do |file|
+          file["url"]&.scan(regex)&.map { |match| "#{match[2]},#{match[0]},#{match[1]}" }
+        end
+      end&.flatten
     end
   end
 
   conflicts_with cask: [
     "dotnet-sdk",
-    "homebrew/cask-versions/dotnet-preview",
-    "homebrew/cask-versions/dotnet-sdk-preview",
+    "dotnet-sdk@preview",
+    "dotnet@preview",
   ], formula: "dotnet"
   depends_on macos: ">= :mojave"
 

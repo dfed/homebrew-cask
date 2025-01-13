@@ -1,6 +1,6 @@
 cask "flexoptix" do
-  version "5.19.0-latest"
-  sha256 "5332cd549c8bac5b98def44af95daf71e8b07eab10f7dffa85abcb8895afcb57"
+  version "5.26.0-latest"
+  sha256 "262008ce050504fdb4875d4d716447bd484972260e6a182c08290b5637e5745c"
 
   url "https://flexbox.reconfigure.me/download/electron/mac/x64/FLEXOPTIX%20App-#{version}.dmg",
       verified: "flexbox.reconfigure.me/download/electron/mac/x64/"
@@ -13,7 +13,7 @@ cask "flexoptix" do
     strategy :electron_builder
   end
 
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :catalina"
 
   app "FLEXOPTIX App.app"
 

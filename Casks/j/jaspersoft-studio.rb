@@ -1,17 +1,15 @@
 cask "jaspersoft-studio" do
-  version "6.20.6"
-  sha256 "14e992dc5f42910e49a4876d40ec046c36334ab8b4467d0fbef68034fd803ba5"
+  version "6.21.0"
+  sha256 "b130dea83acec8ecefae1129b5dcf1ae97cb85f99f8892f9532906bd9cbd4af6"
 
   url "https://downloads.sourceforge.net/jasperstudio/JaspersoftStudio-#{version}/js-studiocomm_#{version}_macosx_x86_64.dmg",
       verified: "sourceforge.net/jasperstudio/"
   name "Jaspersoft Studio"
   desc "Eclipse-based report development tool for JasperReports"
-  homepage "https://community.jaspersoft.com/project/jaspersoft-studio"
+  homepage "https://community.jaspersoft.com/downloads/community-edition/"
 
-  livecheck do
-    url "https://sourceforge.net/projects/jasperstudio/files/"
-    regex(%r{url=.*?/jasperstudio/files/JasperSoftStudio[._-]v?(\d+(?:\.\d+)+)}i)
-  end
+  # https://community.jaspersoft.com/knowledgebase/faq/faqs-on-community-edition-changes-effective-january-25-2024-r4629/
+  disable! date: "2024-02-11", because: :no_longer_available
 
   auto_updates true
 

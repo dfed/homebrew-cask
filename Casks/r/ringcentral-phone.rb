@@ -1,6 +1,6 @@
 cask "ringcentral-phone" do
-  version "23.4.0"
-  sha256 "2665eaaf476329097ff4f456c763d08f966c31573c646f61b472e52da28c0e9c"
+  version "24.3.0"
+  sha256 "e3f04da58464e60f74e7852a85f7ed3294e007515e6398718254a755680dd858"
 
   url "https://downloads.ringcentral.com/sp/RingCentral-Phone-#{version}.dmg"
   name "RingCentral Phone"
@@ -19,4 +19,8 @@ cask "ringcentral-phone" do
     "~/Library/Preferences/com.ringcentral.RingCentral Phone.plist",
     "~/Library/Saved Application State/com.ringcentral.ringcentralformac.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

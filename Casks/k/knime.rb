@@ -1,14 +1,14 @@
 cask "knime" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "5.2.0"
-  sha256 arm:   "ae944a7258219e494130316c8eb05a0ee1c5bcbfab3f1a02692411c7a7c07e2f",
-         intel: "b48d1cb2aefa0071005828dd938dbcd1d8a592bf6c68fa0fa822e9e8bb94f047"
+  version "5.4.0"
+  sha256 arm:   "2a5f9de12743ce93a64971e922220a303d0de5d65031d1309d6a7cad94511bfa",
+         intel: "d152a47b5e7477af76b993605a873405cb3e4bcd4f917d7de2c945cbd315bf8f"
 
   url "https://download.knime.org/analytics-platform/macosx/knime_#{version}.app.macosx.cocoa.#{arch}.dmg",
       verified: "download.knime.org/analytics-platform/macosx/"
   name "KNIME Analytics Platform"
-  desc "Software to create and productionize data science"
+  desc "Software to create and productionise data science"
   homepage "https://www.knime.com/"
 
   livecheck do

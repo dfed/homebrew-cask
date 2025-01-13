@@ -1,9 +1,9 @@
 cask "sejda-pdf" do
-  version "7.6.7"
-  sha256 "0f5fcb219e9ff9c6c8db4ac1d3d1ecaf6f03e88e341006b04cc4e26064c12fa4"
+  version "7.8.0"
+  sha256 "1048478785dadf0e006255844aa5210a0e7b6533550e72924c7570e5718bfeed"
 
-  url "https://sejda-cdn.com/downloads/sejda-desktop_#{version}.dmg",
-      verified: "sejda-cdn.com/"
+  url "https://downloads.sejda-cdn.com/sejda-desktop_#{version}.dmg",
+      verified: "downloads.sejda-cdn.com/"
   name "Sejda PDF Desktop"
   desc "PDF editor"
   homepage "https://www.sejda.com/en/desktop"
@@ -24,4 +24,8 @@ cask "sejda-pdf" do
     "~/Library/Preferences/com.sejda.sejda-desktop.plist",
     "~/Library/Saved Application State/com.sejda.sejda-desktop.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

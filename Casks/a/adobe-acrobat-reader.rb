@@ -1,11 +1,11 @@
 cask "adobe-acrobat-reader" do
-  version "23.008.20470"
-  sha256 "6d8fd62affc5d0b0249970d098e737ac5d8b3488ea1e04e5817cc8ec5aa773eb"
+  version "24.004.20272"
+  sha256 "caf55cce07d1c1b00fb4178d904c2d29d4e47d100c5c8af55287f612e5d97fee"
 
   url "https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/#{version.no_dots}/AcroRdrDC_#{version.no_dots}_MUI.dmg"
   name "Adobe Acrobat Reader"
   desc "View, print, and comment on PDF documents"
-  homepage "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
+  homepage "https://www.adobe.com/acrobat/pdf-reader.html"
 
   livecheck do
     url "https://rdc.adobe.io/reader/products?lang=en&site=landing&os=Mac%20OS%2010.15&api_key=dc-get-adobereader-cdn"

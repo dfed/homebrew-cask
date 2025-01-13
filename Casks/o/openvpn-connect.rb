@@ -1,8 +1,8 @@
 cask "openvpn-connect" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "3.4.8,4792"
-  sha256 "16006420e1a169556ead3dfdbf69a4bf32eed1a14dbed0afaf5168d37e600e93"
+  version "3.6.0,5410"
+  sha256 "6d69a623704d1d2aece068d8186ea61adef6038f663ec7064dcb569a369dde49"
 
   url "https://swupdate.openvpn.net/downloads/connect/openvpn-connect-#{version.csv.first}.#{version.csv.second}_signed.dmg"
   name "OpenVPN Connect client"
@@ -13,7 +13,10 @@ cask "openvpn-connect" do
     url "https://openvpn.net/downloads/openvpn-connect-v#{version.major}-macos.dmg"
     regex(%r{/openvpn[._-]connect[._-]v?(\d+(?:\.\d+)+)\.(\d+)[._-]signed\.dmg}i)
     strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[1]},#{match[2]}"
     end
   end
 
@@ -39,8 +42,9 @@ cask "openvpn-connect" do
             ]
 
   zap script: {
-        executable: "security",
-        args:       ["delete-keychain", "openvpn.keychain-db"],
+        executable:   "security",
+        args:         ["delete-keychain", "openvpn.keychain-db"],
+        must_succeed: false,
       },
       trash:  [
         "~/Library/Application Support/OpenVPN Connect",

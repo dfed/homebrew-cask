@@ -1,10 +1,10 @@
 cask "eaglefiler" do
-  version "1.9.12"
-  sha256 "2138bef9ffcc9101cf4f37809b175c991a5c312465bf30f59d82b967b332ab3a"
+  version "1.9.16"
+  sha256 "1a0d828b4078e0efcb6a0ffadf3d4ddc328ae503ad70f23387da8fcb377610e8"
 
   url "https://c-command.com/downloads/EagleFiler-#{version}.dmg"
   name "EagleFiler"
-  desc "Organize files, archive e-mails, save Web pages and notes, search everything"
+  desc "Organise files, archive e-mails, save Web pages and notes, search everything"
   homepage "https://c-command.com/eaglefiler/"
 
   livecheck do
@@ -28,4 +28,8 @@ cask "eaglefiler" do
     "~/Library/Preferences/com.c-command.EagleFiler.plist",
     "~/Library/Saved Application State/com.c-command.EagleFiler.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

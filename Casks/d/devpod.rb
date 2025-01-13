@@ -1,15 +1,20 @@
 cask "devpod" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.4.2"
-  sha256 arm:   "8f5941f81f761baa7c7aa78499d70b7d13ebb37bdf978d22716699817ca23dd2",
-         intel: "60617ef878469e9709d73f397b44b3873e9d8054ece99fdea091a59619bd3b73"
+  version "0.6.8"
+  sha256 arm:   "6c7b648a8682afecb7625d338ff1a32230355cb4a94e4c9134f339e19d3ba328",
+         intel: "623464b066a473bceccaff0987cc6bace19a9b1add8c87ea1dd1a382af6f7ac5"
 
   url "https://github.com/loft-sh/devpod/releases/download/v#{version}/DevPod_macos_#{arch}.dmg",
       verified: "github.com/loft-sh/devpod/"
   name "DevPod"
   desc "UI to create reproducible developer environments based on a devcontainer.json"
   homepage "https://devpod.sh/"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   auto_updates true
   depends_on macos: ">= :high_sierra"

@@ -1,9 +1,9 @@
 cask "slite" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.2.20,231130v39ddq1hx"
-  sha256 arm:   "1c028898ff2487109aea00c6984bf3fc60b5473cd6feaaf3c9f637a7c03af2ff",
-         intel: "4c9d74c5d9efc214aab28cd00e51464e093bcf9b370a6b9b60eb9dced70ebd04"
+  version "1.2.24,240910g8wxg6biq"
+  sha256 arm:   "f87cfde9f2a724401fe5be63a74546b0c53b22f1381b7afd1d377ea8f748be98",
+         intel: "94675c7d0720efbac1645abfed44177109eb28870e249632adad5793d48fec5e"
 
   url "https://download.todesktop.com/20062929x31pwfi/Slite%20#{version.csv.first}%20-%20Build%20#{version.csv.second}-#{arch}-mac.zip",
       verified: "download.todesktop.com/20062929x31pwfi/"
@@ -14,13 +14,17 @@ cask "slite" do
   livecheck do
     url "https://download.todesktop.com/20062929x31pwfi/latest-mac.yml"
     regex(/Build[ ._-]([^-]+)[._-]/i)
-    strategy :electron_builder do |item, regex|
-      build = item["files"].first["url"][regex, 1]
-      next if build.blank?
+    strategy :electron_builder do |yaml, regex|
+      yaml["files"]&.map do |item|
+        match = item["url"]&.match(regex)
+        next if match.blank?
 
-      "#{item["version"]},#{build}"
+        "#{yaml["version"]},#{match[1]}"
+      end
     end
   end
+
+  depends_on macos: ">= :catalina"
 
   app "Slite.app"
 

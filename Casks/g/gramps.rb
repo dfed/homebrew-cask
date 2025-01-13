@@ -1,9 +1,9 @@
 cask "gramps" do
   arch arm: "Arm", intel: "Intel"
 
-  version "5.1.6,1"
-  sha256 arm:   "a7a8b3ea24a7acf09112b7414183d54136df90308388d780b66f2a366af428f3",
-         intel: "456add4d982bf98750935069efd93b2cdd96d888ad4f7d6d5e938d820730558e"
+  version "5.2.3,1"
+  sha256 arm:   "05b9fb71ccff93dec27d8dd3e73551b4b235f3b8e36abe520ca7c1da5ee9aabe",
+         intel: "43e7e4da029942eb78cc6b8cb8a2f1905fa13a68c6e8870feacc3498baf10e38"
 
   url "https://github.com/gramps-project/gramps/releases/download/v#{version.csv.first}/Gramps-#{arch}-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/gramps-project/gramps/"
@@ -14,15 +14,21 @@ cask "gramps" do
   livecheck do
     url :url
     regex(/^Gramps[._-]#{arch}[._-]v?(\d+(?:.\d+)+)[._-](\d+)\.dmg$/i)
-    strategy :github_latest do |json, regex|
-      json["assets"]&.map do |asset|
-        match = asset["name"]&.match(regex)
-        next if match.blank?
+    strategy :github_releases do |json, regex|
+      json.map do |release|
+        next if release["draft"] || release["prerelease"]
 
-        "#{match[1]},#{match[2]}"
-      end
+        release["assets"]&.map do |asset|
+          match = asset["name"]&.match(regex)
+          next if match.blank?
+
+          "#{match[1]},#{match[2]}"
+        end
+      end.flatten
     end
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "Gramps.app"
 

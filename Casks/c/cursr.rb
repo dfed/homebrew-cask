@@ -1,14 +1,14 @@
 cask "cursr" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.6.5"
-  sha256 arm:   "def8dd59c7ebbbf507a1de30a37ddec4b0db45a89756e17422264cb2d28ac315",
-         intel: "04d277276d974f61bbb4a74e42c36db9f56e4346062468d862b84c83db5efd31"
+  version "1.7.2"
+  sha256 arm:   "cd00c51c6c394b5e5b59c7ee4d62cfaf4228c3eec7632c2441d647e2e4c574a4",
+         intel: "ca3963bfdc77a03e4abd2c6470d3ca5b2c57cdf1591d8efd990df5564be993bd"
 
   url "https://github.com/bitgapp/Cursr/releases/download/v#{version}/Cursr-mac-#{arch}.dmg",
       verified: "github.com/bitgapp/Cursr/"
   name "Cursr"
-  desc "Customize mouse movements between multiple displays"
+  desc "Customise mouse movements between multiple displays"
   homepage "https://cursr.app/"
 
   livecheck do

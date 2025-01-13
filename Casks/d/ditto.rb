@@ -1,6 +1,6 @@
 cask "ditto" do
-  version "1.11.2"
-  sha256 "4cfbd94d54e691f0f8132b4dd7eb45078c7f83f78d49f0ba5444a12eeb04cd9d"
+  version "1.11.5"
+  sha256 "a48a3810e82369ee8dc5515561677bb38b375f31bbc6a0187a44c1857aefd5ea"
 
   url "https://download.airsquirrels.com/Ditto/App/Mac/Ditto-#{version}.dmg"
   name "Ditto"
@@ -11,6 +11,8 @@ cask "ditto" do
     url "https://updates.goditto.com/DittoConnect/Mac/"
     strategy :sparkle, &:short_version
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "Ditto.app"
 

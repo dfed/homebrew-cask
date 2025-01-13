@@ -1,16 +1,19 @@
 cask "ddpm" do
-  version "1.2.0.0052"
-  sha256 "53faf376738a35a8f1af6f4ba48ea18986d885f032ca89911172f6e6e1b4c58b"
+  version "1.3.2.0015"
+  sha256 "d015a871642bdb65391d6dba23c2dc1c7e86058d91083afe7312601046417ca4"
 
-  url "https://dl.dell.com/FOLDER10656664M/1/DDPMv#{version}.zip"
+  url "https://www.delldisplaymanagermac.com/DDPM/DDPMv#{version}.zip",
+      verified: "delldisplaymanagermac.com/"
   name "DDPM"
   name "Dell Display and Peripheral Manager"
   desc "Monitors and peripherals manager"
   homepage "https://dell.com/"
 
   livecheck do
-    url "https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=3v8tw"
-    regex(/ddpmv(\d+(?:\.\d+)+)\.zip/i)
+    url "https://www.delldisplaymanagermac.com/DDPM/ddpm.json"
+    strategy :json do |json|
+      json.dig("versionTable", "*", "originVersion")
+    end
   end
 
   pkg "DDPMv#{version}/DDPM_Installer.pkg"
@@ -21,7 +24,7 @@ cask "ddpm" do
             rmdir:   "/Applications/DDPM"
 
   zap trash: [
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/qisda.autolaunchddpmhelper.sfl2",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/qisda.autolaunchddpmhelper.sfl*",
     "~/Library/Caches/Qisda.DDPM",
     "~/Library/Containers/Qisda.AutoLaunchDDPMHelper",
     "~/Library/HTTPStorages/Qisda.DDPM",

@@ -5,7 +5,7 @@ cask "bonitastudiocommunity" do
   url "https://github.com/bonitasoft/bonita-platform-releases/releases/download/#{version}/BonitaStudioCommunity-#{version}-x86_64.dmg",
       verified: "github.com/bonitasoft/bonita-platform-releases/"
   name "Bonita Studio Community Edition"
-  desc "Business process automation and optimization"
+  desc "Business process automation and optimisation"
   homepage "https://www.bonitasoft.com/downloads"
 
   livecheck do
@@ -26,4 +26,8 @@ cask "bonitastudiocommunity" do
     "/Library/Caches/org.bonitasoft.studio.product",
     "~/Library/Preferences/org.bonitasoft.studio.product.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

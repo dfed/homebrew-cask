@@ -1,6 +1,6 @@
 cask "copilot" do
-  version "3.5.27,168-c7ed67db"
-  sha256 "c7ed67dbf4b28d9544d603cc4d36dbd54355d8a01493abb5942b40e466a73fd3"
+  version "5.1.5,252-a639c116"
+  sha256 "a639c1162060ae1b481d34b7b885dd309c3beff6deb29c7802581c26cec5f25d"
 
   url "https://storage.googleapis.com/copilot-mac-releases/images/Copilot-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "storage.googleapis.com/copilot-mac-releases/"
@@ -9,10 +9,10 @@ cask "copilot" do
   homepage "https://copilot.money/"
 
   livecheck do
-    url "https://releases.copilot.money/latest"
-    regex(/copilot[._-](\d+(?:\.\d+)+)-(\d+)-(\w+)/i)
-    strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map { |match| "#{match[0]},#{match[1]}-#{match[2]}" }
+    url "https://releases.copilot.money/last_release?channel=production"
+    regex(/copilot[._-](\d+(?:\.\d+)+)-(\d+-\h+)/i)
+    strategy :json do |json, regex|
+      json["url"]&.scan(regex)&.map { |match| "#{match[0]},#{match[1]}" }
     end
   end
 

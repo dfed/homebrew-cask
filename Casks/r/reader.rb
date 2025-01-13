@@ -1,15 +1,15 @@
 cask "reader" do
-  version "0.1.77"
-  sha256 "0f12573449c99c501f4002361756e5376a57b9785e6c3eca24c38f6841a80565"
+  version "0.1.1137"
+  sha256 "34656727886e2d6560635fefa45669dd5c365e96c33ddc320e477be055adce16"
 
   url "https://github.com/readwiseio/reader-desktop-releases/releases/download/reader-desktop-v#{version}/Reader_#{version}_universal.dmg",
       verified: "github.com/readwiseio/reader-desktop-releases/"
   name "Readwise Reader"
-  desc "Save articles to read, highlight key content, and organize notes for review"
+  desc "Save articles to read, highlight key content, and organise notes for review"
   homepage "https://readwise.io/read/"
 
   livecheck do
-    url :stable
+    url :url
     strategy :github_latest
   end
 

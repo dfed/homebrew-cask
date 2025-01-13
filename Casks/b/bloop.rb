@@ -1,9 +1,9 @@
 cask "bloop" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.5.11"
-  sha256 arm:   "b8f02a26ebfd737b892bfce2418bcf5b0b3a5c46f5b57c6be4c4b327355cbb71",
-         intel: "d54c68e0dd9e9d41f24f0aeb15591546e7430c77720a24d4342f0cdc6ba806cc"
+  version "0.6.5"
+  sha256 arm:   "81f57e777ba61dc04ce1b22c2903d144c4b97beea532415f53a8f30e41b01b68",
+         intel: "7a8a10b4cb89dcb327217ec644fa1c9e62db732229e2d23b2a723d8def714bf0"
 
   url "https://github.com/BloopAI/bloop/releases/download/v#{version}/bloop_#{version}_#{arch}.dmg",
       verified: "github.com/BloopAI/bloop/"
@@ -11,10 +11,7 @@ cask "bloop" do
   desc "Code search engine"
   homepage "https://bloop.ai/"
 
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
+  deprecate! date: "2025-01-05", because: :discontinued
 
   depends_on macos: ">= :big_sur"
 

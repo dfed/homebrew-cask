@@ -1,9 +1,9 @@
 cask "google-cloud-sdk" do
   arch arm: "arm", intel: "x86_64"
 
-  version "460.0.0"
-  sha256 arm:   "5774f9ed194dcaf4ca6806d7cc5c7db9ec77e6c45c3c0e34a69d833abca16e72",
-         intel: "5c9b84fa5aed4412db2e67824329abde6a1146c21363412e5e140f5637264239"
+  version "505.0.0"
+  sha256 arm:   "a308e068a9fcdf9d419371830ab9fead35799e9e529ef691976ec0d8829dcb1d",
+         intel: "a2dbae18f22781dd26a1fdf8175c83ed24530c26a26639fdb0996c2f1e31a204"
 
   url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-darwin-#{arch}.tar.gz"
   name "Google Cloud SDK"
@@ -12,7 +12,7 @@ cask "google-cloud-sdk" do
 
   livecheck do
     url "https://cloud.google.com/sdk/docs/install-sdk"
-    regex(/google-cloud-cli-(\d+(?:\.\d+)+)/i)
+    regex(/latest\s*gcloud\s*CLI\s*version\s*\(v?(\d+(?:\.\d+)+)\)/i)
   end
 
   auto_updates true
@@ -31,7 +31,6 @@ cask "google-cloud-sdk" do
       "--install-python", "false"
     ],
   }
-  binary "google-cloud-sdk/bin/anthoscli"
   binary "google-cloud-sdk/bin/bq"
   binary "google-cloud-sdk/bin/docker-credential-gcloud"
   binary "google-cloud-sdk/bin/gcloud"
@@ -44,7 +43,7 @@ cask "google-cloud-sdk" do
 
   preflight do
     FileUtils.cp_r staged_path/"google-cloud-sdk/.", google_cloud_sdk_root, remove_destination: true
-    (staged_path/"google-cloud-sdk").rmtree
+    FileUtils.rm_r(staged_path/"google-cloud-sdk")
     FileUtils.ln_s google_cloud_sdk_root, (staged_path/"google-cloud-sdk")
   end
 
@@ -61,19 +60,4 @@ cask "google-cloud-sdk" do
     "#{google_cloud_sdk_root}.staging",
     google_cloud_sdk_root,
   ]
-
-  caveats <<~EOS
-    To add gcloud components to your PATH, add this to your profile:
-
-      for bash users
-        source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
-
-      for zsh users
-        source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-        source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-      for fish users
-        source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
-
-  EOS
 end

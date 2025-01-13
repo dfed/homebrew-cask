@@ -1,11 +1,11 @@
 cask "hazel" do
-  version "5.3.1"
-  sha256 "2c99c12db52b92823a7e3ccd17bfd5c7081884634acb697131236b92ad46d9b8"
+  version "6.0.3"
+  sha256 "0b26fc24e047200b01e01b6277ca268c7879631a5eaa845af7da495fe7dcd323"
 
   url "https://s3.amazonaws.com/Noodlesoft/Hazel-#{version}.dmg",
       verified: "s3.amazonaws.com/Noodlesoft/"
   name "Hazel"
-  desc "Automated organization"
+  desc "Automated organisation"
   homepage "https://www.noodlesoft.com/"
 
   livecheck do
@@ -14,7 +14,7 @@ cask "hazel" do
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :monterey"
 
   app "Hazel.app"
 

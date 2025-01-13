@@ -1,8 +1,8 @@
 cask "vmware-fusion" do
-  version "13.5.0,22583790"
-  sha256 "8c365b44fb8372eb2bd5146d28e163d50ec71b6b92ee6bb3a1965dee182748d1"
+  version "13.6.2,24409261"
+  sha256 "db86abb7cdd4357bb4538c013b8d7eb20ee7c05dd2218707884ab9976246312c"
 
-  url "https://download3.vmware.com/software/FUS-#{version.csv.first.no_dots}/VMware-Fusion-#{version.csv.first}-#{version.csv.second}_universal.dmg"
+  url "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/#{version.csv.first}/#{version.csv.second}/universal/core/com.vmware.fusion.zip.tar"
   name "VMware Fusion"
   desc "Create, manage, and run virtual machines"
   homepage "https://www.vmware.com/products/fusion.html"
@@ -10,23 +10,22 @@ cask "vmware-fusion" do
   livecheck do
     url "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion-universal.xml"
     regex(%r{fusion/(\d+(?:\.\d+)+/\d+)}i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| match&.first&.tr("/", ",") }
+    strategy :xml do |xml, regex|
+      xml.get_elements("//url").map do |item|
+        match = item.text&.strip&.match(regex)
+        next if match.blank?
+
+        match[1].tr("/", ",")
+      end
     end
   end
 
   auto_updates true
-  conflicts_with cask: [
-    "homebrew/cask-versions/vmware-fusion7",
-    "homebrew/cask-versions/vmware-fusion8",
-    "homebrew/cask-versions/vmware-fusion10",
-    "homebrew/cask-versions/vmware-fusion11",
-    "homebrew/cask-versions/vmware-fusion12",
-    "homebrew/cask-versions/vmware-fusion-tech-preview",
-  ]
-  depends_on macos: ">= :monterey"
+  conflicts_with cask: "vmware-fusion@preview"
+  depends_on macos: ">= :ventura"
+  container nested: "com.vmware.fusion.zip"
 
-  app "VMware Fusion.app"
+  app "#{staged_path}/payload/VMware Fusion.app"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vkd/bin/vctl"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-bridge"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-cfgcli"
@@ -35,6 +34,7 @@ cask "vmware-fusion" do
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-natd"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-netifup"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-sniffer"
+  binary "#{appdir}/VMware Fusion.app/Contents/Library/vmcli"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmrest"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmrun"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmss2core"

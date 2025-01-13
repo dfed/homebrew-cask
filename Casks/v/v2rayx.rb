@@ -8,6 +8,8 @@ cask "v2rayx" do
   desc "GUI for v2ray-core"
   homepage "https://github.com/Cenmrev/V2RayX"
 
+  deprecate! date: "2024-02-21", because: :discontinued
+
   app "V2RayX.app"
 
   uninstall_preflight do
@@ -27,4 +29,8 @@ cask "v2rayx" do
     "~/Library/Application Support/V2RayX",
     "~/Library/Preferences/cenmrev.V2RayX.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

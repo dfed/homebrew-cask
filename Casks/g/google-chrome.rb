@@ -1,5 +1,5 @@
 cask "google-chrome" do
-  version "120.0.6099.234"
+  version "131.0.6778.265"
   sha256 :no_check
 
   url "https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg"
@@ -10,12 +10,12 @@ cask "google-chrome" do
   livecheck do
     url :url
     strategy :extract_plist do |versions|
-      versions.values.map(&:short_version).compact.first
+      versions.values.filter_map(&:short_version).first
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Google Chrome.app"
 

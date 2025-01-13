@@ -47,9 +47,17 @@ cask "microsoft-word" do
       skip "Legacy version"
     end
   end
-  on_monterey :or_newer do
-    version "16.80.23121017"
-    sha256 "fa9d5023b6dadc129b642272a219bb211a5946e8aaebd3b3c0942051bbe5ae02"
+  on_monterey do
+    version "16.89.24091630"
+    sha256 "e064013cf26dc3742f07436fae1bb1a37fdd21fc4fb09640c0de0fc977f4ffd3"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "16.92.24120731"
+    sha256 "d9109daf861a4c08d8dab257483d70c1615f3077376664677a08430f67b5ef5b"
 
     livecheck do
       url "https://go.microsoft.com/fwlink/p/?linkid=525134"

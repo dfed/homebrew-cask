@@ -5,8 +5,10 @@ cask "lofi" do
   url "https://github.com/dvx/lofi/releases/download/v#{version}/lofi.dmg",
       verified: "github.com/dvx/lofi/"
   name "Lofi"
-  desc "Spotify player with WebGL visualizations"
+  desc "Spotify player with WebGL visualisations"
   homepage "https://www.lofi.rocks/"
+
+  depends_on macos: ">= :high_sierra"
 
   app "lofi.app"
 
@@ -15,4 +17,8 @@ cask "lofi" do
     "~/Library/Preferences/lofi.rocks.plist",
     "~/Library/Saved Application State/lofi.rocks.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

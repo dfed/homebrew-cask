@@ -1,6 +1,6 @@
 cask "teleport-connect" do
-  version "14.3.3"
-  sha256 "de4380d2a9058a6776a0fa4acd985dca83751d86e211dfab83f4f5ef0ea95476"
+  version "17.1.5"
+  sha256 "9ab03ae2e8a03d91fa2b510d1557f5540fe69ab40838bd7a070dc9bc83de1f7f"
 
   url "https://cdn.teleport.dev/Teleport%20Connect-#{version}.dmg",
       verified: "cdn.teleport.dev/"
@@ -13,6 +13,8 @@ cask "teleport-connect" do
     regex(/href=.*?Teleport%20Connect[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
+  depends_on macos: ">= :big_sur"
+
   app "Teleport Connect.app"
 
   zap trash: [
@@ -20,8 +22,4 @@ cask "teleport-connect" do
     "~/Library/Preferences/gravitational.teleport.connect.plist",
     "~/Library/Saved Application State/gravitational.teleport.connect.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

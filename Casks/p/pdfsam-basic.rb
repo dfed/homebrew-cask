@@ -1,6 +1,6 @@
 cask "pdfsam-basic" do
-  version "5.2.0"
-  sha256 "8fb2f4ac523e57d1e03723f2484a5446321e53b0f8ad11c299c2e7931e0554e0"
+  version "5.2.9"
+  sha256 "aeed981e1f2b80810ef3e0ef5fdec091e6c550779f9ea04aaac94139fc1c695d"
 
   url "https://github.com/torakiki/pdfsam/releases/download/v#{version}/PDFsam-#{version}.dmg",
       verified: "github.com/torakiki/pdfsam/"
@@ -21,4 +21,8 @@ cask "pdfsam-basic" do
     "~/Library/Preferences/org.pdfsam.user.plist",
     "~/Library/Saved Application State/org.pdfsam.basic.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

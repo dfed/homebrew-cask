@@ -1,6 +1,6 @@
 cask "youku" do
-  version "9.2.44.1001"
-  sha256 "f5bed1f3c2ab87120563df766a415d12b3c22117aa6a52a4d522c6ee4d25b30b"
+  version "9.2.59.1001"
+  sha256 "f79a9d096c12a4baf457e69942a3d7b414f4bec841ba5d97fe6dba49f50a1fc5"
 
   url "https://pcclient.download.youku.com/iku_electron_client/youkuclient_setup_#{version}.dmg"
   name "Youku"
@@ -13,14 +13,19 @@ cask "youku" do
     regex(/youkuclient[._-]setup[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
+  depends_on macos: ">= :mojave"
+
   app "优酷.app"
 
   zap trash: [
     "~/Library/Application Scripts/com.youku.mac",
-    "~/Library/Application Support/youku-app/",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.youku.mac.sfl*",
+    "~/Library/Application Support/youku-app",
+    "~/Library/Caches/com.youku.mac",
     "~/Library/Containers/com.youku.mac",
-    "~/Library/Containers/优酷",
+    "~/Library/HTTPStorages/com.youku.mac",
+    "~/Library/Logs/优酷",
     "~/Library/Preferences/com.youku.mac.plist",
-    "~/Library/Saved Application State/com.youku.mac.savedState/",
+    "~/Library/Saved Application State/com.youku.mac.savedState",
   ]
 end

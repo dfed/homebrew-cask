@@ -1,9 +1,9 @@
 cask "yggdrasil" do
   arch arm: "arm64", intel: "amd64"
 
-  version "0.5.4"
-  sha256 arm:   "eb9951b8af67a4c2797d6e671641362def0cc52a54bd71b8d1109b277bbda93e",
-         intel: "72d7b171fdb88ec75ac0602cf34f847f189a914aea87a34525d1b0ddf17fb87c"
+  version "0.5.12"
+  sha256 arm:   "631b1d841c7bcf2fdc870f0ef9294500ff04322498f0d9f1bef3354083d506ca",
+         intel: "d574e03247be3b00633b1300c326b3d1e856c06dd82df52886965ee3cc166fce"
 
   url "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v#{version}/yggdrasil-#{version}-macos-#{arch}.pkg"
   name "Yggdrasil"
@@ -14,4 +14,9 @@ cask "yggdrasil" do
 
   uninstall launchctl: "yggdrasil",
             pkgutil:   "io.github.yggdrasil-network.pkg"
+
+  zap delete: [
+    "/etc/yggdrasil.conf",
+    "/Library/Preferences/Yggdrasil",
+  ]
 end

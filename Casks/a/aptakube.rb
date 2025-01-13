@@ -1,6 +1,6 @@
 cask "aptakube" do
-  version "1.6.1"
-  sha256 "e1e890813463c6258a0d06e3ed9812de0414b40095d2714d0c76104fa228f648"
+  version "1.9.1"
+  sha256 "0c02494810fc1a55510f9c3584655c9b55e7eb5bc053c3afa2e12d78d9f20879"
 
   url "https://releases.aptakube.com/Aptakube_#{version}_universal.dmg"
   name "Aptakube"
@@ -9,7 +9,9 @@ cask "aptakube" do
 
   livecheck do
     url "https://aptakube.com/api/latest"
-    regex(/"version": "(\d+(?:\.\d+)+)"/i)
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   auto_updates true

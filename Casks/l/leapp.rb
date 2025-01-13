@@ -1,9 +1,9 @@
 cask "leapp" do
   arch arm: "-arm64"
 
-  version "0.24.2"
-  sha256 arm:   "8e81c1524a56a0e775a412bfd254d05cd7ecb51f9d32b8826e73fb5d1c34ff5d",
-         intel: "7c7abccdaa12e163f5706a14b3138d65035a032777a0f5dece7750faa7262bd5"
+  version "0.26.1"
+  sha256 arm:   "12219dced13feb0cb46e6f47dbda58588749de72b989635068af6cac338c1f8d",
+         intel: "bdf54a3a26649980057e54d0d3cc757f6ce81d5aa02f55b7246b0d0168726790"
 
   url "https://asset.noovolari.com/#{version}/Leapp-#{version}#{arch}.dmg",
       verified: "asset.noovolari.com/"
@@ -15,6 +15,9 @@ cask "leapp" do
     url "https://asset.noovolari.com/latest/latest-mac.yml"
     strategy :electron_builder
   end
+
+  auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "Leapp.app"
 

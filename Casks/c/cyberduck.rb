@@ -1,6 +1,6 @@
 cask "cyberduck" do
-  version "8.7.2,40975"
-  sha256 "5fe0edf488c0887de4d788c39f18e6712e832bf903c4aadc3e452a65a00621f4"
+  version "9.1.1,42639"
+  sha256 "57318a1ac8a27e0baa48100c2d025de7bf1b2c30935d12170afae6a48e860960"
 
   url "https://update.cyberduck.io/Cyberduck-#{version.csv.first}.#{version.csv.second}.zip"
   name "Cyberduck"
@@ -21,6 +21,7 @@ cask "cyberduck" do
     "~/Library/Application Support/Cyberduck",
     "~/Library/Caches/ch.sudo.cyberduck",
     "~/Library/Group Containers/G69SCX94XU.duck",
+    "~/Library/HTTPStorages/ch.sudo.cyberduck",
     "~/Library/Logs/Cyberduck",
     "~/Library/Preferences/ch.sudo.cyberduck.plist",
     "~/Library/Saved Application State/ch.sudo.cyberduck.savedState",

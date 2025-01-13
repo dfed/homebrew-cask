@@ -1,6 +1,6 @@
 cask "roundpie" do
   version "1.5.1558"
-  sha256 "21afc76f03495933a7f75e5969d5d01f735611a892005f85750b9515c53d45ef"
+  sha256 "4249b963e22f6d7bb53cb6071ee37a88eb36132d3b709d7899eedc67e04ae642"
 
   url "https://roundpie.app/installers/RoundPie-#{version}.dmg",
       verified: "roundpie.app/"
@@ -8,10 +8,7 @@ cask "roundpie" do
   desc "Pomodoro time tracker"
   homepage "https://theroundpie.com/"
 
-  livecheck do
-    url "https://pmdn.co/osx"
-    strategy :header_match
-  end
+  disable! date: "2024-07-29", because: :discontinued
 
   app "RoundPie.app"
 
@@ -21,4 +18,8 @@ cask "roundpie" do
     "~/Library/Preferences/com.atgalaikas.app.plist",
     "~/Library/Saved Application State/com.atgalaikas.app.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

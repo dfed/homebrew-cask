@@ -2,9 +2,9 @@ cask "libreoffice" do
   arch arm: "aarch64", intel: "x86-64"
   folder = on_arch_conditional arm: "aarch64", intel: "x86_64"
 
-  version "7.6.4"
-  sha256 arm:   "44d141603010771b720fb047a760cb1c184e767528d7c4933b5456c64ebaddb2",
-         intel: "58ecd09fd4b57805d03207f0daf2d3549ceeb774e54bd4a2f339dc6c7b15dbc9"
+  version "24.8.4"
+  sha256 arm:   "cef2ac5ae8dda894cdd86c97bcd6da72ede81e78b1afa7d99d8676ac135ae114",
+         intel: "4322f7bda190887605acbdd73cd568d55ac366ca1f2cda82b029ef3de9ae071a"
 
   url "https://download.documentfoundation.org/libreoffice/stable/#{version}/mac/#{folder}/LibreOffice_#{version}_MacOS_#{arch}.dmg",
       verified: "download.documentfoundation.org/libreoffice/stable/"
@@ -17,7 +17,7 @@ cask "libreoffice" do
     regex(%r{href=["']v?(\d+(?:\.\d+)+)/?["' >]}i)
   end
 
-  conflicts_with cask: "homebrew/cask-versions/libreoffice-still"
+  conflicts_with cask: "libreoffice-still"
   depends_on macos: ">= :catalina"
 
   app "LibreOffice.app"

@@ -1,6 +1,6 @@
 cask "vnc-server" do
-  version "7.9.0"
-  sha256 "ddf6ac91ecac618d0245ad3ac100c1841407287b45dffb1feb4f800c57b3d0a6"
+  version "7.13.1"
+  sha256 "c521436373e5dcc45a874c80e0eb72d45a9740f5d5f49552a53c1fd8474d4ef3"
 
   url "https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-#{version}-MacOSX-universal.pkg"
   name "Real VNC Server"
@@ -15,8 +15,8 @@ cask "vnc-server" do
   pkg "VNC-Server-#{version}-MacOSX-universal.pkg"
 
   uninstall_preflight do
-    system_command "/Applications/RealVNC/Uninstall VNC Server.app/Contents/Resources/uninstaller.sh",
-                   print_stderr: false, sudo: true
+    file = "/Applications/RealVNC/Uninstall VNC Server.app/Contents/Resources/uninstaller.sh"
+    system_command file, print_stderr: false, sudo: true if File.exist?(file)
   end
 
   uninstall launchctl: [

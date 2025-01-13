@@ -3,9 +3,17 @@ cask "microsoft-auto-update" do
     version "4.40.21101001"
     sha256 "f638f7e0da9ee659c323f2ede0f176804bfe9a615a8f8b6320bd2e69d91ef2b2"
   end
-  on_sierra :or_newer do
-    version "4.66.23121017"
-    sha256 "e1d0fb04740282af67235329cd3d51229168bdde69d57b38ecfeaf66969170fd"
+  on_sierra do
+    version "4.51.22091101"
+    sha256 "ea9e59eb60604ad9785cb0c81bd490de5c7d32527f1da7064d4f77226e2dc907"
+  end
+  on_high_sierra do
+    version "4.63.23091003"
+    sha256 "abde56323f4753a90a99ca26a3c62060a498328bd90e0421395ec14a47d49101"
+  end
+  on_mojave :or_newer do
+    version "4.77.24121924"
+    sha256 "c818d32f268dfba316bfaedf27ab3e9224c529d2647454464270f58ebc9db4c7"
   end
 
   url "https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_AutoUpdate_#{version}_Updater.pkg"
@@ -20,7 +28,6 @@ cask "microsoft-auto-update" do
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
 
   pkg "Microsoft_AutoUpdate_#{version}_Updater.pkg"
 
@@ -61,7 +68,7 @@ cask "microsoft-auto-update" do
         "~/Library/Saved Application State/com.microsoft.autoupdate2.savedState",
       ],
       rmdir: [
-        "~/Library/Caches/Microsoft/uls",
         "~/Library/Caches/Microsoft",
+        "~/Library/Caches/Microsoft/uls",
       ]
 end

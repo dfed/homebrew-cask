@@ -1,12 +1,12 @@
 cask "visualboyadvance-m" do
-  version "2.1.8"
-  sha256 "89399615c7e4e48cc6024e3c3b30ddf58eef5dcb2589dbf982cfc3d6d502ed7f"
+  version "2.1.11"
+  sha256 "fbb90afdb6aae1f67ea1aab1e5eca2e0098a76d2f9cb8127b1263555e8d6523b"
 
   url "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v#{version}/visualboyadvance-m-Mac-x86_64.zip",
       verified: "github.com/visualboyadvance-m/visualboyadvance-m/"
   name "Visual Boy Advance - M"
   desc "Game Boy Advance emulator"
-  homepage "https://vba-m.com/"
+  homepage "https://visualboyadvance-m.org/"
 
   livecheck do
     url :url
@@ -19,4 +19,8 @@ cask "visualboyadvance-m" do
     "~/Library/Application Support/visualboyadvance-m",
     "~/Library/Preferences/visualboyadvance-m.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,6 +1,6 @@
 cask "greenery" do
-  version "0.9.5"
-  sha256 "c1c8e6ccd88b054af604c37a3dc62c451d352e14e5626249b022fbcd23bbaf08"
+  version "0.9.11"
+  sha256 "36fe169fe95f136b79d70eeb917e74d7742671f22f33634349012a75da0e5131"
 
   url "https://github.com/GreenfireInc/Releases.Greenery/releases/download/v#{version}/Greenery.#{version}.zip",
       verified: "github.com/GreenfireInc/Releases.Greenery/"
@@ -8,7 +8,12 @@ cask "greenery" do
   desc "Cryptocurrency bookkeeping and accounting wallet"
   homepage "https://www.greenery.finance/"
 
-  depends_on macos: ">= :high_sierra"
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  depends_on macos: ">= :catalina"
 
   app "Greenery.app"
 

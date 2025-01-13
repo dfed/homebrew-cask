@@ -1,16 +1,15 @@
 cask "fxfactory" do
-  version "8.0.12,7733"
-  sha256 "555651d8549a69d64269d51b9d00f83d51893fd2a0c61dc82d71f30769a76d25"
+  version "8.0.21,8056"
+  sha256 :no_check # required as upstream package is often updated in place
 
-  url "https://fxfactory.s3.amazonaws.com/noiseindustries/fxfactory/FxFactory-#{version.csv.first}-#{version.csv.second}.zip",
-      verified: "fxfactory.s3.amazonaws.com/noiseindustries/"
+  url "https://store.fxfactory.com/products/noiseindustries/fxfactory/FxFactory-#{version.csv.first}-#{version.csv.second}.zip"
   name "FxFactory"
-  desc "Browse, install and purchase effects and plugins from a huge catalog"
+  desc "Browse, install and purchase effects and plugins from a huge catalogue"
   homepage "https://fxfactory.com/"
 
   livecheck do
     url "https://fxfactory.com/download/"
-    regex(/FxFactory[._-]v?(\d+(?:\.\d+)+)[._-](\d+).zip/i)
+    regex(/FxFactory[._-]v?(\d+(?:\.\d+)+)[._-](\d+)\.zip/i)
     strategy :page_match do |page, regex|
       match = page.match(regex)
       next if match.blank?

@@ -1,9 +1,9 @@
 cask "heroic" do
   arch arm: "arm64", intel: "x64"
 
-  version "2.12.0"
-  sha256 arm:   "96f6293bf1a472fa6b9d1e8889dfca8130690b25e33da5450695aa3122bccd96",
-         intel: "8a341acb51af9298e7c90710239d9d4361c6cbee25457fc6a6895c4cb8614703"
+  version "2.15.2"
+  sha256 arm:   "8c35963a36c4990a4da955a7596ca4d2f03c81f024de5a1f91cc7151e4e424b6",
+         intel: "370e7af3600bb04dae3d4a413365ffdd9a5dda87283438b443e257fd0475bace"
 
   url "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v#{version}/Heroic-#{version}-macOS-#{arch}.dmg"
   name "Heroic Games Launcher"
@@ -11,6 +11,7 @@ cask "heroic" do
   homepage "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/"
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Heroic.app"
 
@@ -18,6 +19,7 @@ cask "heroic" do
     "~/Library/Application Support/heroic",
     "~/Library/Logs/heroic",
     "~/Library/Preferences/com.electron.heroic.plist",
+    "~/Library/Preferences/com.heroicgameslauncher.hgl.plist",
     "~/Library/Saved Application State/com.electron.heroic.savedState",
   ]
 end

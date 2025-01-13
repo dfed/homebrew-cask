@@ -1,6 +1,6 @@
 cask "ipremoteutility" do
-  version "1.9.4"
-  sha256 "1af15c27fb3e4127e17341db520b6f3cc9acdbbdd3560b816a916795cbf435e8"
+  version "1.9.11"
+  sha256 "6398e3979970d09ace6dd06fa21617ab3a722ca35d35321ed17926f84f5bd378"
 
   url "https://www.flandersscientific.com/ip-remote/release/IPRemoteUtility-#{version}-macOS.zip"
   name "Flanders IP Remote Utility"
@@ -13,6 +13,7 @@ cask "ipremoteutility" do
   end
 
   depends_on macos: ">= :high_sierra"
+  container nested: "IPRemoteUtility-#{version}-macOS/IPRemoteUtility-#{version}.dmg"
 
   app "IPRemoteUtility.app"
 
@@ -21,4 +22,8 @@ cask "ipremoteutility" do
     "~/Library/Caches/FlandersScientific/IPRemoteUtility",
     "~/Library/Preferences/com.flandersscientific.IPRemoteUtility.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

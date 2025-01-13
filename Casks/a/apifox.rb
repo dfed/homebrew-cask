@@ -1,21 +1,23 @@
 cask "apifox" do
   arch arm: "-macOS-arm64"
+  livecheck_arch = on_arch_conditional arm: "-arm64"
 
-  version "2.5.0"
-  sha256 arm:   "225dd77bedbdc4ceb09340a05c7f6e4e7e4c043b723a49fe2c10a7d6943d8615",
-         intel: "e353e11225e8666b20623491cb7e64472e537b11dd3b75a87e0f709a522ee8c4"
+  version "2.6.45"
+  sha256 arm:   "ad5fc0dbb66488bfd516cc0832bc987ba5998cbadf2adebc821049624a7c820a",
+         intel: "aff32d7bd106319f460e44b770761328272dc308098220279d1cb29dcee9f249"
 
-  url "https://cdn.apifox.cn/download/#{version}/Apifox#{arch}-#{version}.dmg"
+  url "https://file-assets.apifox.com/download/#{version}/Apifox#{arch}-#{version}.dmg"
   name "Apifox"
   desc "Platform for API documentation, debugging, and testing"
-  homepage "https://www.apifox.cn/"
+  homepage "https://www.apifox.com/"
 
   livecheck do
-    url "https://cdn.apifox.cn/download/mac/latest-mac.yml?noCache=#{Time.new.to_i * 2}"
+    url "https://api.apifox.com/api/v1/configs/client-updates/#{version}/mac#{livecheck_arch}/latest-mac.yml?noCache=#{Time.new.to_i * 2}"
     strategy :electron_builder
   end
 
   auto_updates true
+  depends_on macos: ">= :el_capitan"
 
   app "Apifox.app"
 

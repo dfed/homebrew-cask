@@ -1,9 +1,9 @@
 cask "chatall" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.58.85"
-  sha256 arm:   "e0433a640642022bb277d77fbaf0c71be981ae965a1f0e4e31ed26fc24ffd23f",
-         intel: "8803eb54731c3455607ee71493553cef5212eb7b40720f0da8cc478bf2dfa98f"
+  version "1.83.108"
+  sha256 arm:   "4382cd9b040931437af5bc2fc626e3b1d421a8b6f80600e43363b757ede16f6d",
+         intel: "6ce54f4cf98fe0fee12819b843d5502180e2424663fd57df927633aae745e0d1"
 
   url "https://github.com/sunner/ChatALL/releases/download/v#{version}/ChatALL-#{version}-mac-#{arch}.dmg"
   name "ChatALL"
@@ -16,7 +16,7 @@ cask "chatall" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "ChatALL.app"
 

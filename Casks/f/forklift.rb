@@ -1,6 +1,6 @@
 cask "forklift" do
-  version "4.0.6"
-  sha256 "a6b6de21f0f02765619f78609fe259cd21dac6506134b5fc5d56b4541802ee92"
+  version "4.2.1"
+  sha256 "1f8f6a4bed02f3ea06bb0b3a1b95334a9fb4314451f00f2f146ac00e097dbd45"
 
   url "https://download.binarynights.com/ForkLift/ForkLift#{version}.zip"
   name "ForkLift"
@@ -13,7 +13,6 @@ cask "forklift" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/forklift3"
   depends_on macos: ">= :monterey"
 
   app "ForkLift.app"

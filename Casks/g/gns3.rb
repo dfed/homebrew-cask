@@ -1,7 +1,7 @@
 cask "gns3" do
   # NOTE: "3" is not a version number, but an intrinsic part of the product name
-  version "2.2.45"
-  sha256 "2decd3626a0151ace2a6b89ee40a1b19857e08e25755e5d99685fe069e4165f6"
+  version "3.0.2"
+  sha256 "c91df589900aed0ac08c365dea1715e01a16f93ceed25f0df4d038c0516ed74d"
 
   url "https://github.com/GNS3/gns3-gui/releases/download/v#{version}/GNS3-#{version}.dmg",
       verified: "github.com/GNS3/gns3-gui/"
@@ -15,7 +15,7 @@ cask "gns3" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :monterey"
 
   app "GNS3.app"
 

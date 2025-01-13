@@ -1,8 +1,8 @@
 cask "mactracker" do
-  version "7.12.13"
-  sha256 "860ee6715b19644f341b46c3f6201b418fcef33c7377eab3cc405d363e21fb8d"
+  version "7.13.2"
+  sha256 "36cd9eb3ab8ca9f1ca99e555e9e8465d5d2936dbf64f778d60b9d1bec8ce8691"
 
-  url "https://www.mactracker.ca/downloads/Mactracker_#{version}.zip"
+  url "https://mactracker.ca/downloads/Mactracker_#{version}.zip"
   name "Mactracker"
   desc "Detailed information on every Apple product ever made"
   homepage "https://mactracker.ca/"

@@ -1,6 +1,6 @@
 cask "arq" do
-  version "7.26.6"
-  sha256 "f860d29541f36a9c6726ed49f88e05dcb18b938f2f78dd569aa82937bc712e4c"
+  version "7.34"
+  sha256 "cc463cbcc2c66f8aede4dd5f23df6bfb3a4803bf5085d0006509d6b85c1f9487"
 
   url "https://www.arqbackup.com/download/arqbackup/Arq#{version}.pkg"
   name "Arq"
@@ -9,12 +9,13 @@ cask "arq" do
 
   livecheck do
     url "https://www.arqbackup.com/download/arqbackup/arq#{version.major}_release_notes.html"
-    regex(/Version\s*v?(\d+(?:\.\d+)+)/i)
+    regex(/Version\s+v?(\d+(?:\.\d+)+)/i)
   end
 
   auto_updates true
 
   pkg "Arq#{version}.pkg"
+  binary "#{appdir}/Arq.app/Contents/Resources/arqc"
 
   uninstall launchctl: [
               "com.haystacksoftware.arqagent",

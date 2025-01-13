@@ -1,6 +1,6 @@
 cask "fsnotes" do
-  version "6.6.6"
-  sha256 "f0c3c5d48328068661b796d8ed689ca73044e0d62f689628457f908cda3d93ba"
+  version "6.9.9"
+  sha256 "20ca55065800db24298c711367bf5b64a3a7c0763964ca85665dded0ee68c217"
 
   url "https://github.com/glushchenko/fsnotes/releases/download/#{version}/FSNotes_#{version}.zip",
       verified: "github.com/glushchenko/fsnotes/"
@@ -12,6 +12,8 @@ cask "fsnotes" do
     url :url
     strategy :github_latest
   end
+
+  depends_on macos: ">= :mojave"
 
   app "FSNotes.app"
 

@@ -1,8 +1,11 @@
 cask "mitmproxy" do
-  version "10.2.2"
-  sha256 "4b1b7447de18d3a2b52b3123917b8df749371a2030b779d368462b58b20777d1"
+  arch arm: "arm64", intel: "x86_64"
 
-  url "https://downloads.mitmproxy.org/#{version}/mitmproxy-#{version}-macos-x86_64.tar.gz"
+  version "11.1.0"
+  sha256 arm:   "c431c2e4005eeb89900fc22c13f25dd616b010fa461fa189aa5f2221d0bcd45f",
+         intel: "d01f2a3e997441ff43ab5838bf43b8b0dce4923c97b8b8348f03eb2d83b5e83b"
+
+  url "https://downloads.mitmproxy.org/#{version}/mitmproxy-#{version}-macos-#{arch}.tar.gz"
   name "mitmproxy"
   desc "Intercept, modify, replay, save HTTP/S traffic"
   homepage "https://mitmproxy.org/"
@@ -12,7 +15,7 @@ cask "mitmproxy" do
   livecheck do
     url "https://downloads.mitmproxy.org/list"
     strategy :xml do |xml|
-      xml.get_elements("//ListBucketResult//CommonPrefixes//Prefix").map do |item|
+      xml.get_elements("//Prefix").map do |item|
         item.text&.strip&.delete_suffix("/")
       end
     end
@@ -23,8 +26,4 @@ cask "mitmproxy" do
   binary "mitmproxy.app/Contents/MacOS/mitmweb"
 
   zap trash: "~/.mitmproxy"
-
-  caveats do
-    requires_rosetta
-  end
 end

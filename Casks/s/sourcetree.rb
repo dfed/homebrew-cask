@@ -9,8 +9,6 @@ cask "sourcetree" do
     livecheck do
       skip "Legacy version"
     end
-
-    depends_on macos: ">= :el_capitan"
   end
   on_high_sierra do
     version "3.2.1,225"
@@ -35,8 +33,8 @@ cask "sourcetree" do
     end
   end
   on_catalina :or_newer do
-    version "4.2.6,261"
-    sha256 "0e56c21432872a99871f712bb09941681d025db723ca22e0b34095a4eed5217a"
+    version "4.2.10,269"
+    sha256 "4a3ec25616930a8932d9c3abf8be34c99362dbb3e5d72dcbf9dcf6ab332c6126"
 
     url "https://product-downloads.atlassian.com/software/sourcetree/ga/Sourcetree_#{version.csv.first}_#{version.csv.second}.zip",
         verified: "product-downloads.atlassian.com/software/sourcetree/ga/"
@@ -45,8 +43,6 @@ cask "sourcetree" do
       url "https://product-downloads.atlassian.com/software/sourcetree/Appcast/SparkleAppcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: ">= :catalina"
   end
 
   name "Atlassian SourceTree"

@@ -1,6 +1,6 @@
 cask "shattered-pixel-dungeon" do
-  version "2.3.0"
-  sha256 "9f0bbf7cd2a7e5f97bb03e7370c31c5121937a450ae8d1673c5c755c3c951e95"
+  version "2.5.4"
+  sha256 "874add16cfce8e8bd09dbe12a81bdaa8daf6ce728dfd06e77cf111792c3478ad"
 
   url "https://github.com/00-Evan/shattered-pixel-dungeon/releases/download/v#{version}/ShatteredPD-v#{version}-macOS.zip",
       verified: "github.com/00-Evan/shattered-pixel-dungeon/"
@@ -21,4 +21,8 @@ cask "shattered-pixel-dungeon" do
     "~/Library/Application Support/Shattered Pixel Dungeon",
     "~/Library/Saved Application State/com.shatteredpixel.shatteredpixeldungeon.apple.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

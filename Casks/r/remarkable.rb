@@ -5,10 +5,10 @@ cask "remarkable" do
   url "https://updates-download.cloud.remarkable.engineering/sparkle/reMarkableMacOs/#{version.csv.second}/reMarkable-#{version.csv.first}.#{version.csv.third}.dmg",
       verified: "updates-download.cloud.remarkable.engineering/sparkle/reMarkableMacOs/"
   name "Remarkable"
-  desc "View, Screen Share, organize, import, and download files to a reMarkable device"
+  desc "View, Screen Share, organise, import, and download files to a reMarkable device"
   homepage "https://remarkable.com/"
 
-  deprecate! date: "2024-01-17", because: "has moved to the app store"
+  deprecate! date: "2024-01-17", because: :moved_to_mas
 
   auto_updates true
   depends_on macos: ">= :big_sur"

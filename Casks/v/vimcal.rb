@@ -2,12 +2,12 @@ cask "vimcal" do
   arch arm: "-arm64"
   host_suffix = on_arch_conditional arm: "m1", intel: "production"
 
-  version "1.0.27"
-  sha256 arm:   "459a388d15a381799fcd62528724058a697ed8b441cc59d1e3982c19eb38d112",
-         intel: "79fb5cce48cceba3ddec56ff17e7e10991ebb41936e85edf52084df6893a2759"
+  version "1.0.31"
+  sha256 arm:   "8591360b7d8209454ea894af784d2f8e6491bcc56a53c4f99f72600cb9a2f560",
+         intel: "a3f764b1d0829f214caa04bb0f9aff803b109c02b28d74f66522f1d81994e3a9"
 
-  url "https://vimcal-#{host_suffix}.s3.us-west-1.amazonaws.com/Vimcal-#{version}#{arch}.dmg",
-      verified: "vimcal-#{host_suffix}.s3.us-west-1.amazonaws.com/"
+  url "https://vimcal-#{host_suffix}.s3.amazonaws.com/Vimcal-#{version}#{arch}.dmg",
+      verified: "vimcal-#{host_suffix}.s3.amazonaws.com/"
   name "Vimcal"
   desc "Calendar"
   homepage "https://vimcal.com/"

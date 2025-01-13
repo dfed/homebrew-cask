@@ -1,6 +1,6 @@
 cask "meetingbar" do
-  version "4.7.0"
-  sha256 "042b47c13c1a16714b31d774a7fd89ba7800174dacbe64ad6690323cff129e53"
+  version "4.10.0"
+  sha256 "f1bed4c91e5f2dd9ce61afdfb2a9bbe67e27fac65829fef9848121e83a76b7a0"
 
   url "https://github.com/leits/MeetingBar/releases/download/v#{version}/MeetingBar.dmg"
   name "MeetingBar"

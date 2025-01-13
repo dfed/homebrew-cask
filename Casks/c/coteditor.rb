@@ -56,8 +56,8 @@ cask "coteditor" do
     end
   end
   on_ventura :or_newer do
-    version "4.7.3"
-    sha256 "3e5b6bd38be32234eb140deba3df3370539610bbb1e6e3b13faccfb58c4bf481"
+    version "5.0.7"
+    sha256 "034eff48056be4c70681bf642d8c201f5214ab54217b027f4c3a64797a837d85"
 
     livecheck do
       url :url
@@ -72,7 +72,6 @@ cask "coteditor" do
   homepage "https://coteditor.com/"
 
   auto_updates true
-  depends_on macos: ">= :ventura"
 
   app "CotEditor.app"
   binary "#{appdir}/CotEditor.app/Contents/SharedSupport/bin/cot"
@@ -85,6 +84,7 @@ cask "coteditor" do
     "~/Library/Caches/com.apple.helpd/Generated/com.coteditor.CotEditor.help*",
     "~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/com.coteditor.CotEditor.help*",
     "~/Library/Caches/com.apple.helpd/SDMHelpData/Other/Japanese/HelpSDMIndexFile/com.coteditor.CotEditor.help*",
+    "~/Library/Caches/com.coteditor.CotEditor",
     "~/Library/Containers/com.coteditor.CotEditor",
     "~/Library/Preferences/com.coteditor.CotEditor.plist",
   ]
